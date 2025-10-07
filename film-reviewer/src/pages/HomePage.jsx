@@ -32,6 +32,7 @@ function HomePage() {
 
     return (
         <>
+            <Button color="orange" variant="light">CREAR REVIEW</Button>
             <FilmList films={films} />
         </>
     );

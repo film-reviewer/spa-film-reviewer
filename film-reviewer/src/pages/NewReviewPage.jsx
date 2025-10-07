@@ -1,53 +1,130 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Group } from "@mantine/core";
+import {
+  TextInput,
+  Textarea,
+  Button,
+  Group,
+  Title,
+} from "@mantine/core";
 import { randomId } from "@mantine/hooks";
+import axios from "axios";
+import { BASE_URL } from '../BaseUrl';
+import { useNavigate } from "react-router-dom";
 
 function NewReviewPage() {
+  const [reviewData, setReviewData] = useState(null);
+  const [error, setError] = useState(false);
+
+  const navigate = useNavigate();
+  
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
-      name: "",
-      email: "",
+      titulo: "",
+      autor: "",
+      imagen: "",
+      opinion: "",
+      rating: "",
+      sinopsis: "",
     },
   });
 
+  const handleSubmit = (values) => {
+    const newReview = {
+      id: randomId(),
+      ...values,
+    };
+
+    setReviewData(newReview);
+    console.log("Reseña generada:", newReview);
+    
+    axios
+      .post(BASE_URL + '/films.json', newReview)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error("Error", err);
+        setError(true);
+      });
+  };
+  if(error){
+    return (
+      <>
+      <p>No se ha podido añadir la pelicula</p>
+      </>
+    )
+  }
   return (
-    <div>
-      <TextInput
-        label="Name"
-        placeholder="Name"
-        key={form.key("name")}
-        {...form.getInputProps("name")}
-      />
+    <div style={{ maxWidth: 600, margin: "0 auto", padding: "2rem" }}>
+      <Title order={2} ta="center" mb="md">
+        NUEVA FILM REVIEW
+      </Title>
 
-      <TextInput
-        mt="md"
-        label="Email"
-        placeholder="Email"
-        key={form.key("email")}
-        {...form.getInputProps("email")}
-      />
+      <form onSubmit={form.onSubmit(handleSubmit)}>
+        <TextInput
+          label="Título"
+          placeholder="Título de la película"
+          key={form.key("titulo")}
+          {...form.getInputProps("titulo")}
+        />
 
-      <Group justify="center" mt="xl">
-        <Button
-          onClick={() =>
-            form.setValues({
-              name: randomId(),
-              email: `${randomId()}@test.com`,
-            })
-          }
-        >
-          Set random values
-        </Button>
-      </Group>
+        <TextInput
+          mt="md"
+          label="Autor"
+          placeholder="Nombre del autor"
+          key={form.key("autor")}
+          {...form.getInputProps("autor")}
+        />
 
-      <Group justify="center" mt="md">
-        <Button component={Link} to="/">
-          Back to Home
-        </Button>
-      </Group>
+        <TextInput
+          mt="md"
+          label="URL de imagen"
+          placeholder="Enlace a la imagen del póster"
+          key={form.key("imagen")}
+          {...form.getInputProps("imagen")}
+        />
+
+        <Textarea
+          mt="md"
+          label="Opinión"
+          placeholder="Escribe tu opinión sobre la película"
+          autosize
+          minRows={3}
+          key={form.key("opinion")}
+          {...form.getInputProps("opinion")}
+        />
+
+        <TextInput
+          mt="md"
+          label="Rating"
+          placeholder="Puntuación (por ejemplo: 8.5)"
+          key={form.key("rating")}
+          {...form.getInputProps("rating")}
+        />
+
+        <Textarea
+          mt="md"
+          label="Sinopsis"
+          placeholder="Breve resumen de la película"
+          autosize
+          minRows={4}
+          key={form.key("sinopsis")}
+          {...form.getInputProps("sinopsis")}
+        />
+
+        <Group justify="center" mt="xl">
+          <Button type="submit">Guardar Reseña</Button>
+        </Group>
+
+        <Group justify="center" mt="md">
+          <Button component={Link} to="/">
+            Volver al inicio
+          </Button>
+        </Group>
+      </form>
     </div>
   );
 }
