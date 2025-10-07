@@ -3,6 +3,8 @@ import FilmList from '../components/FilmList';
 import { BASE_URL } from '../BaseUrl';
 import axios from 'axios';
 
+import { Group, Button } from '@mantine/core';
+
 
 
 function HomePage() {
@@ -10,7 +12,7 @@ function HomePage() {
 
     useEffect(() => {
         axios
-            .get(BASE_URL + '/films.json') 
+            .get(BASE_URL + '/films.json')
             .then((response) => {
 
                 const filmsObj = response.data;
@@ -26,13 +28,14 @@ function HomePage() {
             .catch((error) => {
                 console.log('No hay películas para mostrar en la lista...', error);
             });
-    },  []);
+    }, []);
 
     return (
         <>
             <FilmList films={films} />
         </>
     );
-}
+};
+
 
 export default HomePage;

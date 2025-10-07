@@ -3,14 +3,16 @@
 import FilmCard from "./FilmCard";
 
 function FilmList({ films }) {
+
+
+  if (!films || films.length === 0) {
+    return <p>No hay películas para mostrar</p>
+  }
+
+
   return (
     <div className="film-list">
-    {/* verificamos que films tenga mas de 0 elementos, sino mostramos texto */}
-      {films && films.length > 0 ? (
-        films.map((film) => <FilmCard key={film.id} film={film} />)
-      ) : (
-        <p>No hay películas para mostrar</p>
-      )}
+      { films.map((film) => <FilmCard key={film.id} film={film} />) }
     </div>
   );
 }
