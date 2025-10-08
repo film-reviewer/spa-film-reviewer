@@ -10,7 +10,7 @@ function FilmCard({ film, onDelete}) {
       <img src={film.imagen} alt={film.title} />
       <h3>{film.titulo}</h3>
       <p><strong>Opinion:</strong> {film.opinion}</p>
-      <p><strong>Sinopsis:</strong> {film.sinopsis}</p>
+      <p><strong>Sinopsis:</strong> {film.sinopsis}</p>en
       <p><strong>Nota:</strong> {film.rating}</p>
       <p>{film.autor}</p>
       <Link to={`/details/${film.id}`}>
@@ -19,7 +19,7 @@ function FilmCard({ film, onDelete}) {
 
       <Button variant="outline" color="red" onClick={() => onDelete(film.id)}>Delete</Button>
 
-      <Link to={`/details/${film.id}`}>
+      <Link to={`/update/${film.id}`}>
         <Button color="indigo">Edit</Button>
       </Link>
 

@@ -5,6 +5,7 @@ import { Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import NewReviewPage from './pages/NewReviewPage';
+import UpdateReviewPage from './pages/UpdateReviewPage';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         {/* <Route path="/details/:id" element={<HomePage/>} />*/}
         <Route path="/new" element={<NewReviewPage/>} />
-        {/*<Route path="/update/:id" element={<HomePage/>} /> */}
+        <Route path="/update/:id" element={<UpdateReviewPage />} />
         <Route path="*" element={<ErrorPage/>} /> 
       </Routes>
       </>
