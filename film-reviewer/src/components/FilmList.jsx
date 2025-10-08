@@ -2,7 +2,7 @@
 
 import FilmCard from "./FilmCard";
 
-function FilmList({ films, onDelete }) {
+function FilmList({ films, onDelete, onDetails }) {
 
 
   if (!films || films.length === 0) {
@@ -12,7 +12,7 @@ function FilmList({ films, onDelete }) {
 
   return (
     <div className="film-list">
-      { films.map((film) => <FilmCard key={film.id} film={film} onDelete={onDelete}  />) }
+      { films.map((film) => <FilmCard key={film.id} film={film} onDelete={onDelete} onDetails={onDetails} />) }
     </div>
   );
 }

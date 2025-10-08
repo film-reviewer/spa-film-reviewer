@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import FilmList from '../components/FilmList';
 import { BASE_URL } from '../BaseUrl';
 import axios from 'axios';
-
+import {useNavigate} from 'react-router-dom';
 import { Group, Button } from '@mantine/core';
 
 
 
 function HomePage() {
     const [films, setFilms] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -40,11 +41,13 @@ function HomePage() {
         console.error('Error al eliminar la película', error);
       });
   };
-
+  const detailsPage = (id) =>{
+    navigate(`/details/${id}`);
+  }
     return (
         <>
             <Button color="orange" variant="light">CREAR REVIEW</Button>
-            <FilmList films={films} onDelete={deleteFilm} />
+            <FilmList films={films} onDelete={deleteFilm} onDetails={detailsPage} />
         </>
     );
 };
