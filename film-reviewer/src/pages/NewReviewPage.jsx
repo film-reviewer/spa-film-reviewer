@@ -13,8 +13,7 @@ import axios from "axios";
 import { BASE_URL } from '../BaseUrl';
 import { useNavigate } from "react-router-dom";
 
-function NewReviewPage() {
-  const [reviewData, setReviewData] = useState(null);
+function valuesPage() {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
@@ -32,16 +31,11 @@ function NewReviewPage() {
   });
 
   const handleSubmit = (values) => {
-    const newReview = {
-      id: randomId(),
-      ...values,
-    };
 
-    setReviewData(newReview);
-    console.log("Reseña generada:", newReview);
+    console.log("Reseña generada:", values);
     
     axios
-      .post(BASE_URL + '/films.json', newReview)
+      .post(BASE_URL + '/films.json', values)
       .then(() => {
         navigate("/");
       })
@@ -129,4 +123,4 @@ function NewReviewPage() {
   );
 }
 
-export default NewReviewPage;
+export default valuesPage;

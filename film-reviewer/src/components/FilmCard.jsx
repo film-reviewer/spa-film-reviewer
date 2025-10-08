@@ -4,7 +4,7 @@ import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 
-function FilmCard({ film }) {
+function FilmCard({ film, onDelete}) {
   return (
     <div className="film-card">
       <img src={film.imagen} alt={film.title} />
@@ -17,7 +17,7 @@ function FilmCard({ film }) {
         <Button color="orange"> Ver detalles</Button>
       </Link>
 
-      <Button variant="outline" color="red">Delete</Button>
+      <Button variant="outline" color="red" onClick={() => onDelete(film.id)}>Delete</Button>
 
       <Link to={`/details/${film.id}`}>
         <Button color="indigo">Edit</Button>

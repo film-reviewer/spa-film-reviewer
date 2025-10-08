@@ -29,11 +29,22 @@ function HomePage() {
                 console.log('No hay películas para mostrar en la lista...', error);
             });
     }, []);
+  
+    const deleteFilm = (id) => {
+    axios
+      .delete(`${BASE_URL}/films/${id}.json`)
+      .then(() => {
+        setFilms((prevFilms) => prevFilms.filter((film) => film.id !== id));
+      })
+      .catch((error) => {
+        console.error('Error al eliminar la película', error);
+      });
+  };
 
     return (
         <>
             <Button color="orange" variant="light">CREAR REVIEW</Button>
-            <FilmList films={films} />
+            <FilmList films={films} onDelete={deleteFilm} />
         </>
     );
 };
