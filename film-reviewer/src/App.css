@@ -1,4 +1,5 @@
 #root {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -32,9 +33,41 @@
 .film-card {
   border: 1px solid #ddd;
   margin: 2%;
+  padding-bottom: 10px;
 }
 
-.film-card img{
-  width: 300px;
-  height: 400px;
+.film-card img {
+  width: 100%;
+  height: auto;
+}
+
+.film-list {
+  position: relative;
+  /* para que las ventanas modales aparezcan centradas */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  padding: 1.5rem;
+}
+
+.film-list .mantine-Modal-inner {
+  left: 0;
+}
+
+/* tablet: a partir de 850px, 2 columnas */
+@media (min-width: 850px) {
+  .film-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .film-card .img-container {
+    min-height: 500px;
+  }
+}
+
+/* Versión para pantallas grandes */
+@media (min-width: 1024px) {
+  .film-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
