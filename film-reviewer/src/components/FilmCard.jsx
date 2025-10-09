@@ -16,7 +16,7 @@ function FilmCard({ film, onDelete, onDetails }) {
   return (
     <div className="film-card">
       <div className="img-container">
-        <img src={film.imagen} alt={film.title} />
+        <img style={{objectFit: "contain"}} src={film.imagen} alt={film.title} />
       </div>
       <h3>{film.titulo}</h3>
       <p><strong>Nota:</strong> {film.rating}</p>
