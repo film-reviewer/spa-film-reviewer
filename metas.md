@@ -6,27 +6,25 @@ Objetivo: Tener el proyecto creado, conectado con Firebase y renderizando datos 
 
 ✅ Tareas:
 
- []Commit inicial con el setup en VS Code (crear proyecto con Vite o CRA, inicializar repo).
+ [✅]Commit inicial con el setup en VS Code.
 
- []Configurar Firebase (crear proyecto y conectar SDK).
+ [✅]Configurar Firebase.
 
- []Crear base de datos (colección reviews o filmsReviews).
+ [✅]Crear la API con FireBase.
 
- []Configurar la API externa (por ejemplo, TMDB o Fake Movie API).
+ [✅]Crear estructura de carpetas (/pages, /components, /services, /context, etc.).
 
- []Crear estructura de carpetas (/pages, /components, /services, /context, etc.).
+ [✅]Añadir React Router y definir rutas base:
 
- []Añadir React Router y definir rutas base:
+      ✅ -/ → HomePage
 
-       -/ → HomePage
+      ✅-/details/:id → DetailsPage
 
-       -/details/:id → DetailsPage
+      ✅ -/new → NewReviewPage
 
-       -/new → NewReviewPage
+      ✅-/update/:id → UpdateReviewPage
 
-       -/update/:id → UpdateReviewPage
-
-       -* → ErrorPage
+      ✅ -* → ErrorPage
 
 
 
@@ -36,27 +34,27 @@ Objetivo: Tener todas las páginas creadas y renderizando la información mínim
 
 ✅ Tareas:
 
-  [] HomePage → mostrar lista de películas desde API externa.
+  [✅] HomePage → mostrar lista de películas desde API externa.
 
-    - [] Componente FilmList (render de tarjetas).
+    - [✅] Componente FilmList (render de tarjetas).
 
-    - [] Componente FilmCard (título, imagen, botón de detalles).
+    - [✅] Componente FilmCard (título, imagen, botón de detalles).
 
-    - [] Añadir Link para navegar al DetailsPage.
+    - [✅] Añadir Link para navegar al DetailsPage.
 
- [] DetailsPage → mostrar info extra + reseña de usuario.
+ [✅] DetailsPage → mostrar info extra + reseña de usuario.
 
-    [] Componente FilmDetails (título, sinopsis, imagen, autor, rating, etc.).
+    [✅] Componente FilmDetails (título, sinopsis, imagen, autor, rating, etc.).
 
-    [] Añadir botón “Editar reseña” → va a /update/:id.
+    [✅] Añadir botón “Editar reseña” → va a /update/:id.
 
-    [] Añadir botón “Eliminar” → abre DeleteNotification.
+    [✅] Añadir botón “Eliminar” → abre DeleteNotification.
 
- [] NewReviewPage → formulario con campos básicos (película, reseña, rating, autor, fecha vista).
+ [✅] NewReviewPage → formulario con campos básicos (película, reseña, rating, autor, fecha vista).
 
- [] UpdateReviewPage → reutilizar formulario pero con los datos cargados desde Firebase.
+ [✅] UpdateReviewPage → reutilizar formulario pero con los datos cargados desde Firebase.
 
- [] ErrorPage → mostrar mensaje 404 simple.
+ [✅] ErrorPage → mostrar mensaje 404 simple.
 
 
 🔵 FASE 3 — Funcionalidades CRUD (Día 3)
@@ -65,17 +63,17 @@ Objetivo: Tener todas las páginas creadas y renderizando la información mínim
 
 ✅ Tareas:
 
- [] Crear servicio Firebase (services/firebase.js) con funciones:
+ [✅] Crear servicio Firebase (services/firebase.js) con funciones:
 
-    - []createReview()
+    - [✅]createReview()
 
-    - []getReviews()
+    - [✅]getReviews()
 
-    - []updateReview()
+    - [✅]updateReview()
 
-    - []deleteReview()
+    - [✅]deleteReview()
 
- [] Conectar las funciones con los formularios (crear, editar, eliminar).
+ [✅] Conectar las funciones con los formularios (crear, editar, eliminar).
 
  [] Añadir confirmación con DeleteNotification (pop-up). 
 
@@ -118,7 +116,7 @@ Objetivo: Añadir features que destaquen el proyecto para el portfolio.
 
 Antes del 9/10/2025 deben tener funcionando:
 
-✅ HomePage con lista de películas (API externa).
+✅ HomePage con lista de películas (API).
 ✅ DetailsPage con info + reseñas del usuario.
 ✅ CRUD completo (crear, leer, actualizar, eliminar reseñas).
 ✅ Responsive funcional en mobile y desktop.
