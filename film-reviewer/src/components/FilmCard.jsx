@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function FilmCard({ film, onDelete, onDetails }) {
   return (
     <div className="film-card">
-      <img src={film.imagen} alt={film.title} />
+      <img style={{objectFit: "contain"}} src={film.imagen} alt={film.title} />
       <h3>{film.titulo}</h3>
       <p><strong>Nota:</strong> {film.rating}</p>
       <p>{film.autor}</p>
