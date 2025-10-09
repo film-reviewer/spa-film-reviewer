@@ -110,7 +110,7 @@ function valuesPage() {
         />
 
         <Group justify="center" mt="xl">
-          <Button type="submit">Guardar Reseña</Button>
+          <Button variant="light" color="green" type="submit">Guardar Reseña</Button>
         </Group>
 
         <Group justify="center" mt="md">

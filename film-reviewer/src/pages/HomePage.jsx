@@ -4,7 +4,7 @@ import { BASE_URL } from '../BaseUrl';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import { Group, Button } from '@mantine/core';
-
+import { Link } from "react-router";
 
 
 function HomePage() {
@@ -46,7 +46,9 @@ function HomePage() {
   }
     return (
         <>
+            <Link to="/new">
             <Button color="orange" variant="light">CREAR REVIEW</Button>
+            </Link>
             <FilmList films={films} onDelete={deleteFilm} onDetails={detailsPage} />
         </>
     );

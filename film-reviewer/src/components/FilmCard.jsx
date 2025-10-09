@@ -15,10 +15,10 @@ function FilmCard({ film, onDelete, onDetails }) {
         <Button color="orange" onClick={() => onDetails(film.id)}> Ver detalles</Button>
       </Link>
 
-      <Button variant="outline" color="red" onClick={() => onDelete(film.id)}>Delete</Button>
+      <Button variant="outline" color="red" onClick={() => onDelete(film.id)}>Eliminar</Button>
 
       <Link to={`/update/${film.id}`}>
-        <Button color="indigo">Edit</Button>
+        <Button color="indigo">Editar</Button>
       </Link>
 
     </div>
