@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "@mantine/form";
-import {
-  TextInput,
-  Textarea,
-  Button,
-  Group,
-  Title,
-} from "@mantine/core";
+import { TextInput, Textarea, Button, Group, Title } from "@mantine/core";
 import { randomId } from "@mantine/hooks";
 import axios from "axios";
-import { BASE_URL } from '../BaseUrl';
+import { BASE_URL } from "../BaseUrl";
 import { useNavigate } from "react-router-dom";
+import { notifications } from "@mantine/notifications";
 
 function valuesPage() {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
-  
+
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
@@ -31,12 +26,16 @@ function valuesPage() {
   });
 
   const handleSubmit = (values) => {
-
     console.log("Reseña generada:", values);
-    
+
     axios
-      .post(BASE_URL + '/films.json', values)
+      .post(BASE_URL + "/films.json", values)
       .then(() => {
+        notifications.show({
+          title: "Reseña creada",
+          message: "Tu reseña se ha publicado correctamente 🎬",
+          color: "green",
+        });
         navigate("/");
       })
       .catch((err) => {
@@ -44,12 +43,12 @@ function valuesPage() {
         setError(true);
       });
   };
-  if(error){
+  if (error) {
     return (
       <>
-      <p>No se ha podido añadir la pelicula</p>
+        <p>No se ha podido añadir la pelicula</p>
       </>
-    )
+    );
   }
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: "2rem" }}>
@@ -110,7 +109,9 @@ function valuesPage() {
         />
 
         <Group justify="center" mt="xl">
-          <Button variant="light" color="green" type="submit">Guardar Reseña</Button>
+          <Button variant="light" color="green" type="submit">
+            Guardar Reseña
+          </Button>
         </Group>
 
         <Group justify="center" mt="md">

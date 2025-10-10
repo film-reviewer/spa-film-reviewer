@@ -1,10 +1,9 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { TextInput, Textarea, Button, Group, Title } from "@mantine/core";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { notifications } from "@mantine/notifications";
 
 function UpdateReviewPage() {
   const { id } = useParams();
@@ -13,7 +12,8 @@ function UpdateReviewPage() {
   const [film, setFilm] = useState(null);
   const [error, setError] = useState(false);
 
-  const BASE_URL = "https://film-reviewer-96fd6-default-rtdb.europe-west1.firebasedatabase.app";
+  const BASE_URL =
+    "https://film-reviewer-96fd6-default-rtdb.europe-west1.firebasedatabase.app";
 
   // utilizamos useEffect para cargar la película
   useEffect(() => {
@@ -35,6 +35,11 @@ function UpdateReviewPage() {
     axios
       .patch(`${BASE_URL}/films/${id}.json`, film)
       .then(() => {
+        notifications.show({
+          title: "Reseña modificada",
+          message: "Tu reseña se ha modificado correctamente 🎬",
+          color: "orange",
+        });
         navigate("/"); // redirige al home tras guardar
       })
       .catch((error) => {
@@ -48,13 +53,11 @@ function UpdateReviewPage() {
 
   return (
     <div style={{ width: "80%", margin: "0 auto", padding: "2rem" }}>
-
       <Title order={2} ta="center" mb="md">
         Editar película
       </Title>
 
       <form onSubmit={handleSubmit}>
-
         <TextInput
           size="lg"
           label="Título"

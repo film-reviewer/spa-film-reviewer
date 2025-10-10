@@ -9,11 +9,11 @@ function Navbar() {
       {/* Izquierda: Logo */}
       <div className="navbar-left">
         <img
-          src="https://i.imgur.com/XjXuOVw.png"
+          src="https://i.imgur.com/yInEJ52.png"
           alt="Logo"
           className="navbar-logo"
         />
-        <span className="navbar-logo-text">MiLogo</span>
+        <span className="navbar-logo-text"></span>
       </div>
 
       {/* Centro: Botón */}
