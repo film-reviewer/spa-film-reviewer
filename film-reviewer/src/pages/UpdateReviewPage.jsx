@@ -94,6 +94,31 @@ function UpdateReviewPage() {
           onChange={(e) => setFilm({ ...film, rating: e.target.value })}
         />
 
+        <TextInput
+          size="lg"
+          mt="md"
+          label="URL de la imagen"
+          placeholder="Introduce la URL de la nueva imagen"
+          value={film.imagen || ""}
+          onChange={(e) => setFilm({ ...film, imagen: e.target.value })}
+        />
+
+        {/* Vista previa de la imagen */}
+        {film.imagen && (
+          <div style={{ textAlign: "center", marginTop: "1rem" }}>
+            <img
+              src={film.imagen}
+              alt={film.titulo}
+              style={{
+                width: "200px",
+                borderRadius: "10px",
+                objectFit: "cover",
+                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"
+              }}
+            />
+          </div>
+        )}
+
         <Group justify="center" mt="xl">
           <Button variant="light" color="green" type="submit">
             Guardar Cambios

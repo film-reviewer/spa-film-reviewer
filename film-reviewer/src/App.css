@@ -50,6 +50,7 @@
 }
 
 .film-list .mantine-Modal-inner {
+  /* para que las ventanas modales aparezcan centradas */
   left: 0;
 }
 
